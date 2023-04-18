@@ -1,0 +1,23 @@
+{
+  "name": "chatbot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Shamueel Baig",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shamueel/chat.githttps:.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Shamueel/chat.githttps:/issues"
+  },
+  "homepage": "https://github.com/Shamueel/chat.githttps:#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
