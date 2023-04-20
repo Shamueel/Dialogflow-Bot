@@ -19,16 +19,17 @@ app.post('/', express.json(), async (req, res) => {
         response: res
     });
 
-    // Extract order ID from webhook request
+    // get orderId
     const orderId = req.body.queryResult.parameters.number;
 
+    //shipment date receive 
     const response = await axios.post('https://orderstatusapi-dot-organization-project-311520.uc.r.appspot.com/api/getOrderStatus', { orderId: orderId });
     
 
 
     const shipmentDate = response.data.shipmentDate;
 
-    
+    //convert date format
     const formattedShipmentDate = new Date(shipmentDate).toLocaleDateString('en-US', {
         weekday: 'long',
         day: 'numeric',
@@ -106,6 +107,4 @@ app.post('/', express.json(), async (req, res) => {
 
 
 
-app.listen(8080, () => {
-    console.log('live at port 8080 or not')
-});
+app.listen(process.env.PORT || 3000)
