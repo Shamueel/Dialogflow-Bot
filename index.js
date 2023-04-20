@@ -7,12 +7,7 @@ const axios = require('axios');
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send("live now!!",play());
-
-    function play() {
-        var audio = new Audio('https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3');
-        audio.play();
-      }
+    res.send("live now!!");
 
     
 });
@@ -26,8 +21,8 @@ app.post('/', express.json(), async (req, res) => {
 
     // Extract order ID from webhook request
     const orderId = req.body.queryResult.parameters.number;
-    console.log(orderId)
-    console.log('ye wala')
+    //console.log(orderId)
+    //console.log('ye wala')
 
     const response = await axios.post('https://orderstatusapi-dot-organization-project-311520.uc.r.appspot.com/api/getOrderStatus', { orderId: orderId });
     //console.log("api: ",response);    
@@ -48,10 +43,11 @@ app.post('/', express.json(), async (req, res) => {
     }
 
     function playAudio(agent) {
-        let text_to_speech = '<speak>'
-          + '<audio src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg"></audio>. '
-          + '</speak>'
-        agent.add(text_to_speech);
+        agent.add(`
+        <speak>
+            <audio src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg"></audio>
+        </speak>`
+        );
         agent.add('webhook 1');
     };
 
